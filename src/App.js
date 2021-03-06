@@ -15,43 +15,40 @@ import {
 } from "react-router-dom";
 
 class App extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     tab: 'home'
-  //   }
-  // }
-  
+  constructor(props) {
+    super(props);
+    this.state = {
+      itemList: []
+    }
+  }
 
+  addItem = (item) => {
+    this.state.itemList.push(item);
+  }
+
+  clearItemList = () => {
+    this.state.itemList = [];
+  }
+  
   render() {
     return (
       <div className="App">
 
         <Router>
           <div>
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/search">search</Link>
-              </li>
-              <li>
-                <Link to="/upload">upload</Link>
-              </li>
-              <li>
-                <Link to="/camera">camera</Link>
-              </li>
-            </ul>
+              <Link to="/">Home</Link>
+              <Link to="/search">search</Link>
+              <Link to="/upload">upload</Link>
+              <Link to="/camera">camera</Link>
             <Switch>
               <Route exact path="/">
-                <Home onButtonClick={this.changeTabComponent}/>
+                <Home clearItemList={this.clearItemList}/>
               </Route>
               <Route path="/search">
-                <Search />
+                <Search clearItemList={this.clearItemList}/>
               </Route>
               <Route path="/upload">
-                <Upload />
+                <Upload clearItemList={this.clearItemList}/>
               </Route>
               <Route path="/camera">
                 <Camera />

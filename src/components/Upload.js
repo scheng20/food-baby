@@ -1,6 +1,11 @@
 import React from "react";
 
 class Upload extends React.Component {
+    constructor(props) {
+        super(props);
+        //this.props.clearItemList;
+    }
+
     render() {
         return (
             <div>

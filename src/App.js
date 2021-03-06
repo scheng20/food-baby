@@ -13,6 +13,8 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import List_Multi from "./components/List_Multi";
+import List_Single from "./components/List_Single";
 
 class App extends React.Component {
   // constructor(props) {
@@ -42,6 +44,12 @@ class App extends React.Component {
               <li>
                 <Link to="/camera">camera</Link>
               </li>
+              <li>
+                <Link to="/list_multi">list_multi</Link>
+              </li>
+              <li>
+                <Link to="/list_single">list_single</Link>
+              </li>
             </ul>
             <Switch>
               <Route exact path="/">
@@ -58,6 +66,12 @@ class App extends React.Component {
               </Route>
               <Route path="/select">
                 <Select />
+              </Route>
+              <Route path="/list_multi">
+                <List_Multi />
+              </Route>
+              <Route path="/list_single">
+                <List_Single />
               </Route>
             </Switch>
           </div>

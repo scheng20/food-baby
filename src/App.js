@@ -18,7 +18,7 @@ import List_Multi from "./components/List_Multi";
 import List_Single from "./components/List_Single";
 import List from './components/List';
 
-class App extends React.Component {
+export default class App extends React.Component {
   
   constructor(props) {
     super(props);

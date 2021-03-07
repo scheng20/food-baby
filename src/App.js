@@ -16,6 +16,7 @@ import {
 } from "react-router-dom";
 import List_Multi from "./components/List_Multi";
 import List_Single from "./components/List_Single";
+import List from './components/List';
 
 class App extends React.Component {
   constructor(props) {
@@ -25,8 +26,11 @@ class App extends React.Component {
     }
   }
 
-  addItem = (item) => {
-    this.state.itemList.push(item);
+  addItem = itemList => {
+    this.setState({
+      ...this.state,
+      itemList
+    });
   }
 
   clearItemList = () => {
@@ -34,6 +38,7 @@ class App extends React.Component {
   }
   
   render() {
+    console.log(this.state.itemList);
     return (
       <div className="App" style={{ backgroundImage: `url(${background})` }}>
 
@@ -45,13 +50,16 @@ class App extends React.Component {
               <Link to="/camera">camera</Link>
             <Switch>
               <Route exact path="/">
-                <Home clearItemList={this.clearItemList}/>
+                <Home/>
               </Route>
               <Route path="/search">
-                <Search clearItemList={this.clearItemList}/>
+                <Search
+                  itemList={this.state.itemList}
+                  addItem={this.addItem}
+                />
               </Route>
               <Route path="/upload">
-                <Upload clearItemList={this.clearItemList}/>
+                <Upload/>
               </Route>
               <Route path="/camera">
                 <Camera />
@@ -64,6 +72,9 @@ class App extends React.Component {
               </Route>
               <Route path="/list_single">
                 <List_Single />
+              </Route>
+              <Route path="/list">
+                <List itemList={this.state.itemList} />
               </Route>
             </Switch>
           </div>

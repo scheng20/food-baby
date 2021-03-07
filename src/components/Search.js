@@ -1,10 +1,36 @@
 import React from "react";
+import './component.css';
+import {
+    Link 
+ } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch, faPlus } from '@fortawesome/free-solid-svg-icons';
+import styled from 'styled-components';
+
+const SearchBar = styled.input`
+    padding: 0.5em;
+    margin: 0.5em;
+    //background-color: #F8F4EA;
+    border: none;
+    border-radius: 15px;
+    outline: none;
+    width: 250px;
+    font-size: 1em;
+`;
+
+const SearchIcon = styled(FontAwesomeIcon)`
+    
+`;
+
+const ConfirmButton = styled.button`
+    background-color: 'black';
+    font-color: 'white';
+`;
 
 class Search extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          itemList: [],
           item: ''
         }
         this.handleChange = this.handleChange.bind(this);
@@ -17,32 +43,15 @@ class Search extends React.Component {
     }
 
     handleSubmit(event) {
-        //alert('An essay was submitted: ' + this.state.item);
-        //this.state.itemList.push(this.state.item);
-        this.setState({ ...this.state, itemList: this.state.itemList.concat([this.state.item]) });
         event.preventDefault();
+        const newItemList = this.props.itemList;
+        newItemList.push(this.state.item);
+        this.props.addItem(newItemList);
+        this.setState({item: ''});
+        Array.from(document.querySelectorAll("input")).forEach(
+            input => (input.value = "")
+          );
     }
-    
-    // addItem(e) {
-    //     if (this.state.item !== "") {
-    //       var newItem = {
-    //         item: this._inputElement.value,
-    //         key: Date.now()
-    //       };
-       
-    //       this.setState((prevState) => {
-    //         return { 
-    //           items: prevState.items.concat(newItem) 
-    //         };
-    //       });
-         
-    //       this._inputElement.value = "";
-    //     }
-         
-    //     console.log(this.state.items);
-           
-    //     e.preventDefault();
-    // }
 
     render() {
         console.log(this.state);
@@ -50,89 +59,16 @@ class Search extends React.Component {
             <div>
                 <h1>Search</h1>
                 <form onSubmit={this.handleSubmit}>
-                    <input type="text" onChange={this.handleChange}></input>
-                    <input type="submit" value="Confirm"></input>
+                <SearchIcon icon={faSearch} />
+                    <SearchBar type="text" onChange={this.handleChange}></SearchBar>
+                    <input type="submit" value="Add"></input>
+                    <FontAwesomeIcon icon={faPlus}/>
                 </form>
-
-                <button>Confirm</button>
+                <ConfirmButton><Link to="/list">Confirm</Link></ConfirmButton>
+                
             </div>
         );
     }
 }
-
-// const Search = () => {
-
-//     const getInitialState = () => {			
-// 		return { toByGroceryItems : [], purchasedGroceryItems : [] }
-//     }
-    
-//     const handleGroceryItemAddition = (groceryItem) => {	
-// 		var allItems = this.state.toByGroceryItems.concat([groceryItem]);
-// 		this.setState({toByGroceryItems: allItems});
-//     }
-
-//     // handleChange = (event) => {
-//     //     this.setState({item: event.target.value});
-//     // }
-
-//     // handleSubmit = () => {
-//     //     this.props.list.push(this.state.item);
-//     //     alert(this.props.list);
-//     //     //event.preventDefault();
-//     // }
-
-
-//     return (
-//         <div>
-//             <h1>Search</h1>
-//             <GroceryItemAddForm onFormSubmit={this.handleGroceryItemAddition}/>
-//                 {/* <input type="text" name={this.state.item} onChange={this.handleChange}></input>
-//                 <button onClick={this.handleSubmit}>Search</button> */}
-
-//         </div>
-//     );
-
-// }
-
-// var GroceryItemAddForm = React.createClass({
-// 	getInitialState : function() {
-// 	  return { item: ''};
-//     },
-    
-// 	handleSubmit : function(e){
-	
-// 	  e.preventDefault();
-    
-//     if(React.findDOMNode(this.refs.itemText).value === "")
-// 	  {
-// 	    alert('Please enter a valid item');
-// 		React.findDOMNode(this.refs.itemText).focus();
-// 		return false;
-// 	  }
-    
-// 	    this.props.onFormSubmit(this.state);
-// 	    this.setState({ 
-// 			itemText: '', id : null, isPurchased : false
-// 		});
-	  
-// 	  React.findDOMNode(this.refs.itemText).focus();
-	  
-// 	  return;
-//     }
-    
-// 	onChange : function(e) {
-// 	  this.setState({
-// 	    item : e.target.value
-// 	  });
-// 	},
-// 	render : function() {
-// 	return (
-// 				<form onSubmit={this.handleSubmit}>
-// 					<input ref="itemText" onChange={this.onChange} value={this.state.itemText} type="text" id="grocery-item-text" placeholder="Add a Grocery Item..." /> 
-// 					<button type="submit">Add</button>
-// 				</form>
-// 			);
-// 	}
-// });
 
 export default Search;

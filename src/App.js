@@ -6,6 +6,7 @@ import Search from "./components/Search";
 import Upload from "./components/Upload";
 import Camera from "./components/Camera";
 import Select from "./components/Select";
+import background from "./images/Home.jpg";
 
 import {
   BrowserRouter as Router,
@@ -13,6 +14,8 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import List_Multi from "./components/List_Multi";
+import List_Single from "./components/List_Single";
 
 class App extends React.Component {
   constructor(props) {
@@ -32,7 +35,7 @@ class App extends React.Component {
   
   render() {
     return (
-      <div className="App">
+      <div className="App" style={{ backgroundImage: `url(${background})` }}>
 
         <Router>
           <div>
@@ -55,6 +58,12 @@ class App extends React.Component {
               </Route>
               <Route path="/select">
                 <Select />
+              </Route>
+              <Route path="/list_multi">
+                <List_Multi />
+              </Route>
+              <Route path="/list_single">
+                <List_Single />
               </Route>
             </Switch>
           </div>

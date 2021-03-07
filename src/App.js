@@ -5,9 +5,10 @@ import FileUploader from "react-firebase-file-uploader";
 import React, { Component } from "react";
 
 class App extends Component {
+	
 	constructor() {
 		super();
-
+		
 		this.handleUploadSuccess = this.handleUploadSuccess.bind(this)
 		this.handleUploadStart = this.handleUploadStart.bind(this)
 		this.handleUploadError = this.handleUploadError.bind(this)
@@ -70,6 +71,21 @@ class App extends Component {
 		this.getResults();
 	}
 
+	findFood() {
+		firebase.firestore().collection("foods").doc("apple")
+	    .get()
+	    .then((doc) => {
+		    if (doc.exists) {
+		        console.log("Document data:", doc.data());
+		    } else {
+		        // doc.data() will be undefined in this case
+		        console.log("No such document!");
+		    }
+		}).catch((error) => {
+		    console.log("Error getting document:", error);
+		});
+	}
+	
 	render() {
 		return (
 			<div className="App">
@@ -86,6 +102,7 @@ class App extends Component {
 						onProgress={this.handleProgress}
 				/>
 				</label>
+				<button onClick = {this.findFood}> FIND FOOD </button>
 			</header>
 			</div>
 		);

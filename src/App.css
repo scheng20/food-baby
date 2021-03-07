@@ -19,6 +19,9 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+a {
+  color: white;
+}
 
 h1 {
   font-family: 'Lora';
@@ -29,6 +32,7 @@ h1 {
   height: 50px;
   left: 33px;
   top: 113px;
+  padding-top: 20px;
 
   font-size: 21px;
   line-height: 27px;
@@ -38,8 +42,8 @@ h1 {
 .bodyStart {
   font-family: 'Proxima Nova';
   color: #5A4031;
-  padding-top: 286px;
-  padding-left: 20px;
+  padding-top: 190px;
+  padding-left: 15px;
 }
 
 .bodyStyle {
@@ -47,7 +51,7 @@ h1 {
   left: 50px;
   height: 18px;
   top: 289px;
-  padding-bottom: 120px;
+  padding-bottom: 30px;
 
   line-height: 18px;
   font-size: 14px;
@@ -56,9 +60,23 @@ h1 {
 
 .homeImage {
   background-image: url("./graphics/home1.png");
-  padding-top: -100px;
+  padding-top: 75px;
+  width: 348px;
 
 }
+.homeImage1 {
+  background-image: url("./graphics/home2.png");
+  padding-top: 75px;
+  width: 348px;
+
+}
+.homeImage2 {
+  background-image: url("./graphics/home2.png");
+  padding-top: 75px;
+  width: 348px;
+
+}
+
 img {
   padding-left: 50px;
 
@@ -143,7 +161,7 @@ button3 {
 
   background: #AEBF99;
   border-radius: 20px;
-  z-index: -0.999999999999999999999999999999999999999999;
+  z-index: -1;
 }
 
 /*.button1 {*/
@@ -179,15 +197,6 @@ container1{
   align-content: center;
 }
 
-body {
-  background-image: url("./graphics/bg.png");
-  background-color: #F8F4EA;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-
 containerHome {
   position: absolute;
   width: 344px;
@@ -199,9 +208,12 @@ containerHome {
   border-radius: 20px;
 }
 
-rect {
+.color {
+  color: #FFFFFF !important;
+}
 
-
+.color:hover, .color:active {
+  color: #5A4031 !important;
 }
 
 

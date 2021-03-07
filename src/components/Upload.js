@@ -5,11 +5,19 @@ import FileUploader from "react-firebase-file-uploader";
 import "./component.css";
 import Navbar from "./Navbar"
 import { Link } from 'react-router-dom';
+import { Image } from 'react-bootstrap';
 
 class Upload extends React.Component {
 
     constructor(props) {
         super(props);
+
+        this.state = {
+            photoURL: ""
+        }
+
+        this.handleUploadSuccess = this.handleUploadSuccess.bind(this);
+        this.handleClose = this.handleClose.bind(this);
     }
 
     async handleUploadSuccess(filename) {
@@ -21,6 +29,7 @@ class Upload extends React.Component {
 
             let downloadURL = await firebase.storage().ref("images").child(filename).getDownloadURL();
             console.log("downloadURL", downloadURL);
+            this.setState({ photoURL: downloadURL });
 
             let newPhoto = {
                 url: downloadURL,
@@ -47,6 +56,10 @@ class Upload extends React.Component {
 
     handleProgress() {
         console.log("UPLOAD IN PROGRESS!");
+    }
+
+    handleClose() {
+        this.setState({ photoURL: "" });
     }
 
     getResults() {
@@ -102,8 +115,9 @@ class Upload extends React.Component {
                         />
                     </label>
                     &nbsp;
-                    <Link className="btn btn-primary" to="/list">Confirm</Link>
+                    <Link className="btn btn-primary" to="/list" onClick={this.handleClose}> Confirm </Link>
                 </div>
+                <Image style={{ width: '100%' }} src={this.state.photoURL} responsive />
                 <Navbar/>
             </div>
         );

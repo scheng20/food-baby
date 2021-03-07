@@ -41,8 +41,7 @@ export default class App extends React.Component {
   render() {
     console.log(this.state.itemList);
     return (
-      <div className="App" style={{ backgroundImage: `url(${background})` }}>
-
+      <div className="App container full-background" style={{ backgroundImage: `url(${background})` }}>
         <Router>
           <div>
             <Switch>

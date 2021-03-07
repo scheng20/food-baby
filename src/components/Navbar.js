@@ -6,16 +6,11 @@ export default function NavBar() {
 					<div className = "col-1">
 						<i class="fas fa-search"></i>
 					</div>
-					<div className = "col-3">
+					<div className = "col-5">
 						<a className = "nav-label" href="/search"> search </a>
 					</div>
-
-					<div className = "col-3" >
-						<a className = "nav-label" href="/upload"> upload </a>
-					</div>
-
-					<div className = "col-3">
-						<a className = "nav-label" href="/camera"> camera </a>
+					<div className = "col-5" >
+						<a className = "nav-label" href="/upload"> upload/camera </a>
 					</div>
 				</div>
 			</div>

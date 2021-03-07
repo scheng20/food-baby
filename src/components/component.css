@@ -14,6 +14,14 @@ a:link {
     top: 0px;
 }
 
+.h1-home {
+	position: relative;
+	width: 300px;
+    height: 50px;
+    left: 33px;
+    top: 20px;
+}
+
 .container-full-page {
 }
 
@@ -21,6 +29,10 @@ a:link {
 	background-color: #AEBF99 !important;
 	border-radius: 20px !important;
 	border: none !important;
+}
+
+.btn-label{
+	color: white;
 }
 
 .upload-area {
@@ -31,6 +43,10 @@ a:link {
 
 .footer-nav {
 	padding-bottom: 30px;
+	position: absolute;
+	bottom: 0px;
+	margin-left: 30px;
+    width: 300px;
 }
 
 .nav-label{
@@ -52,6 +68,7 @@ a:link {
 
 .nav-row {
 	place-content: center;
+	padding-right: 40px;
 }
 
 .fas-brown {
@@ -61,4 +78,25 @@ a:link {
 .top-bar {
 	padding-top: 20px;
 	align-items: center;
+}
+
+.fa-brown {
+	color: #5A4031;
+}
+
+.search-bar {
+	text-align: center;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.search-confirm {
+	padding-top: 20px;
+	padding-left: 50px;
+	padding-bottom: 20px;
+}
+
+.search-item {
+	padding-left: 50px;
+	color: #5A4031;
 }

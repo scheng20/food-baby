@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import firebase from "firebase";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import Navbar from "./Navbar"
 
 const PageContainer = styled.div`
   display: flex;
@@ -118,8 +119,17 @@ class List extends React.Component {
         }
 
         return (
-            <PageContainer>
-                <h1>List</h1>
+            <div className = "container">
+                <div className = "row top-bar">
+                    <div className = "col">
+                        <h1 className = "h1-not-abs">List</h1>
+                    </div>
+                    <div className = "col">
+                        <a href="/">
+                        <i class="fas fa-home fas-brown fa-lg"></i>
+                        </a>
+                    </div>
+                </div>
                 <ListContainer>
                     {this.state.fetchedData.map((item, itemIdx) => (
                         <ListItem
@@ -142,7 +152,8 @@ class List extends React.Component {
                         </ListItem>
                     ))}
                 </ListContainer>
-            </PageContainer>
+                <Navbar/>
+            </div>
         );
     }
 }

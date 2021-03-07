@@ -6,6 +6,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faPlus } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
+import Navbar from "./Navbar"
 
 const SearchBar = styled.input`
     padding: 0.5em;
@@ -56,16 +57,32 @@ class Search extends React.Component {
     render() {
         console.log(this.state);
         return (
-            <div>
-                <h1>Search</h1>
-                <form onSubmit={this.handleSubmit}>
-                    <SearchIcon icon={faSearch} />
+            <div className = "container">
+                <div className = "row top-bar">
+                    <div className = "col">
+                        <h1 className = "h1-not-abs">Search</h1>
+                    </div>
+                    <div className = "col">
+                        <a href="/">
+                        <i class="fas fa-home fas-brown fa-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                <form className = "search-bar" onSubmit={this.handleSubmit}>
+                    <i class="fas fa-search fa-brown"></i>
                     <SearchBar type="text" onChange={this.handleChange}></SearchBar>
-                    <input type="submit" value="Add"></input>
-                    <FontAwesomeIcon icon={faPlus} />
+                    <input className = "btn btn-primary" type="submit" value="Add"></input>
                 </form>
-                <ConfirmButton><Link to="/list">Confirm</Link></ConfirmButton>
-
+                <p className = "search-item"> Added Items: </p>
+                {
+                    this.props.itemList.map((item) => (
+                        <p className = "search-item"> {item} </p>
+                    ))
+                }
+                <div className = "search-confirm">
+                    <ConfirmButton className = "btn btn-primary"><Link className = "btn-label" to="/list">Confirm</Link></ConfirmButton>
+                </div>
+                <Navbar/>
             </div>
         );
     }

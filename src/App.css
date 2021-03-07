@@ -39,10 +39,11 @@ h1 {
 
   color: #5A4031;
 }
+
 .bodyStart {
   font-family: 'Proxima Nova';
   color: #5A4031;
-  padding-top: 190px;
+  padding-top: 120px;
   padding-left: 15px;
 }
 
@@ -52,7 +53,7 @@ h1 {
   height: 18px;
   top: 289px;
   padding-bottom: 30px;
-
+  padding-top: 10px;
   line-height: 18px;
   font-size: 14px;
 
@@ -84,8 +85,8 @@ img {
 
 .leftUpAdjust {
   z-index: 100;
+  padding-top: 44px;
   padding-left: 15px;
-  padding-top: -500px;
 }
 
 .pos1{
@@ -222,3 +223,6 @@ containerHome {
   color: #5A4031;
 }
 
+.full-background {
+  height: 730px;
+}

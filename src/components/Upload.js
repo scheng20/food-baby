@@ -56,12 +56,10 @@ class Upload extends React.Component {
             console.log("RETURNING DATA");
             console.log(postData);
 
-            // TODO - Set the result to the items using add items
             console.log("ALL THE NAMES");
-            postData.forEach(data => {
-                
-                console.log(data.name);
-                //this.props.addItem(data.name);
+            postData[0].data.forEach(data => {
+                // console.log(data.name);
+                this.props.addItem(data.name);
             })
         })
     }

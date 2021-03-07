@@ -60,7 +60,10 @@ export default class App extends React.Component {
                 />
               </Route>
               <Route path="/upload">
-                <Upload/>
+                <Upload
+                  itemList = {this.state.itemList}
+                  addItem={this.addItem}
+                />
               </Route>
               <Route path="/camera">
                 <Camera />

@@ -52,7 +52,7 @@ class Search extends React.Component {
             input => (input.value = "")
           );
     }
-
+    
     render() {
         console.log(this.state);
         return (

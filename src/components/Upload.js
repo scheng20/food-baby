@@ -2,6 +2,8 @@ import React from "react";
 import "../config/constants";
 import firebase from "firebase";
 import FileUploader from "react-firebase-file-uploader";
+import "./component.css";
+import Navbar from "./Navbar"
 
 class Upload extends React.Component {
 
@@ -70,10 +72,20 @@ class Upload extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>Upload</h1>
+            <div className = "container container-full-page">
+                <div className = "row top-bar">
+                    <div className = "col">
+                        <h1 className = "h1-not-abs">Upload</h1>
+                    </div>
+                    <div className = "col">
+                        <a href="/">
+                        <i class="fas fa-home fas-brown fa-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                <div className = "upload-area">
                 <label>
-                    <a className="btn btn-primary"> Upload a file here </a>
+                    <a className="btn btn-primary"> Upload Photo </a>
                     <FileUploader
                         hidden
                         accept="image/*"
@@ -84,6 +96,8 @@ class Upload extends React.Component {
                         onProgress={this.handleProgress}
                     />
                 </label>
+                </div>
+                <Navbar/>
             </div>
         );
     }

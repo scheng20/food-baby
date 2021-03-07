@@ -9,7 +9,6 @@ class Home extends React.Component {
             <div className="container">
             <div className ="negBot">
 
-
                 <h1>Hi there, <br/> welcome to food-baby</h1>
                 <div className="bodyStart">
                         <div className="homeImage">

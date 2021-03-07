@@ -45,10 +45,6 @@ export default class App extends React.Component {
 
         <Router>
           <div>
-              <Link to="/">Home</Link>
-              <Link to="/search">search</Link>
-              <Link to="/upload">upload</Link>
-              <Link to="/camera">camera</Link>
             <Switch>
               <Route exact path="/">
                 <Home/>

@@ -6,4 +6,59 @@ a:link {
     text-decoration: none;
 }
   
-  
+.h1-not-abs {
+	position: relative;
+	width: 300px;
+    height: 50px;
+    left: 33px;
+    top: 0px;
+}
+
+.container-full-page {
+}
+
+.btn-primary {
+	background-color: #AEBF99 !important;
+	border-radius: 20px !important;
+	border: none !important;
+}
+
+.upload-area {
+	padding-top: 240px;
+	padding-bottom: 300px;
+	text-align: center;
+}
+
+.footer-nav {
+	padding-bottom: 30px;
+}
+
+.nav-label{
+	color: white !important;
+}
+
+.nav-bar {
+	background-color: #AEBF99;
+	border-radius: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-right: 5px;
+	padding-left: 5px;
+}
+
+.fas {
+	color: white;
+}
+
+.nav-row {
+	place-content: center;
+}
+
+.fas-brown {
+	color: #5A4031;
+}
+
+.top-bar {
+	padding-top: 20px;
+	align-items: center;
+}

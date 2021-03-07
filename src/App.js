@@ -15,13 +15,6 @@ import {
 } from "react-router-dom";
 
 class App extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     tab: 'home'
-  //   }
-  // }
-  
 
   render() {
     return (
@@ -65,6 +58,4 @@ class App extends React.Component {
       </div>
     )
   }
-}
 
-export default App;

@@ -1,5 +1,5 @@
 import './App.css';
-import './Config/constants';
+import './config/constants';
 import firebase from 'firebase';
 import FileUploader from 'react-firebase-file-uploader';
 

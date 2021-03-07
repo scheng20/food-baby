@@ -20,13 +20,13 @@ class Home extends React.Component {
                         <img src = '../graphics/home2.png' alt=""/>
                     </div>
                 <p className="bodyStyle">2. Select the foods you’re craving, we’ll keep track.</p>
-                    <div className="homeImage2">
+                    <div className="homeImage3">
                         <img src = '../graphics/home3.png' alt=""/>
                     </div>
                 <p className="bodyStyle">3. Vuala! We’ll show you which ones are good and bad, click into them to find out more!</p>
 
                 </div>
-               
+                
                 <div className="leftUpAdjust">
                     <Navbar/>                
                 </div>

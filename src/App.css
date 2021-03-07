@@ -75,8 +75,14 @@ h1 {
   background-image: url("./graphics/home2.png");
   padding-top: 75px;
   width: 348px;
-
 }
+
+.homeImage3 {
+  background-image: url("./graphics/home3.png");
+  padding-top: 75px;
+  width: 348px;
+}
+
 
 img {
   padding-left: 50px;

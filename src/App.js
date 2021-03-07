@@ -14,7 +14,7 @@ import {
   Link
 } from "react-router-dom";
 
-class App extends React.Component {
+export class App extends React.Component {
 
   render() {
     return (
@@ -58,4 +58,4 @@ class App extends React.Component {
       </div>
     )
   }
-
+}

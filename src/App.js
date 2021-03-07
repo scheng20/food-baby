@@ -39,7 +39,7 @@ export default class App extends React.Component {
   }
   
   render() {
-    console.log(this.state.itemList);
+    console.log("from app itemList", this.state.itemList);
     return (
       <div className="App" style={{ backgroundImage: `url(${background})` }}>
 

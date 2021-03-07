@@ -1,7 +1,7 @@
 import React from "react";
 import "../App.css";
 import "../index.css";
-
+import Navbar from "./Navbar"
 
 class Home extends React.Component {
     render() {
@@ -25,11 +25,9 @@ class Home extends React.Component {
                 <p className="bodyStyle">3. Vuala! We’ll show you which ones are good and bad, click into them to find out more!</p>
 
                 </div>
+               
                 <div className="leftUpAdjust">
-                    <button1 className = "color"><a href="/search">Search</a></button1>
-                    <button2 className = "color"><a href="/upload">Upload</a></button2>
-                    <button3 className = "color"><a href="/camera">Camera</a></button3>
-                    <rect className="bottomBar"></rect>
+                    <Navbar/>                
                 </div>
             </div>
         </div>

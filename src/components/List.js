@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from 'styled-components';
+import firebase from "firebase";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 
@@ -20,10 +21,10 @@ const ListContainer = styled.div`
   flex-flow: column nowrap;
   padding: 16px;
   `;
-  
-  const ListItem = styled.div`
+
+const ListItem = styled.div`
   margin-top: 16px;
-  background-color: ${props => props.isGoodFood ? '#a3de83' : '#fa4659'};
+  background-color: ${props => !props.isGoodFood ? '#a3de83' : '#fa4659'};
   width: 100%;
   border-radius: 8px;
   cursor: pointer;
@@ -49,115 +50,101 @@ const ListItemHeaderIcon = styled(FontAwesomeIcon)`
 `;
 
 class List extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      fetchedData: [],
-      openedTabs: [],
-      isFetching: true
-    };
-  }
-
-  componentDidMount() {
-    const fetchFoodItem = item => new Promise((res, rej) => {
-      fetch('https://jsonplaceholder.typicode.com/todos/1')
-        .then(response => response.json())
-        .then(json => {
-          json.title = item;
-          json['isGoodFood'] = Math.random() > 0.5;
-          res(json);
-        })
-        .catch(err => {
-          rej(err);
-        });
-    });
-
-    const fetchRequests = [];
-    for (let item of this.props.itemList) {
-      fetchRequests.push(fetchFoodItem(item));
-    };
-
-    //window.setTimeout(() => {
-      Promise.all(fetchRequests)
-      .then(foodItems => {
-        const openTabs = [];
-        for (let i = 0; i < foodItems.length; i++) {
-          openTabs.push(false);
-        }
-        this.setState({
-          ...this.state,
-          fetchedData: foodItems,
-          openTabs,
-          isFetching: false
-        });
-      })
-      .catch(err => {
-        // Handle error!
-      });
-    //}, 2000);
-  }
-
-  toggleTab = tabIdx => {
-    const newOpenTabs = this.state.openTabs;
-    newOpenTabs[tabIdx] = !newOpenTabs[tabIdx];
-    this.setState({
-      ...this.state,
-      openTabs: newOpenTabs
-    })
-  };
-
-  render() {
-    if (this.state.isFetching) {
-      return (
-        <PageContainer>
-          <h1>List</h1>
-          <p>Hey, just give us one moment!</p>
-        </PageContainer>
-      );
+    constructor(props) {
+        super(props);
+        this.state = {
+            fetchedData: [],
+            openedTabs: [],
+            isFetching: true
+        };
     }
 
-    return (
-      <PageContainer>
-        <h1>List</h1>
-        <ListContainer>
-          {this.state.fetchedData.map((item, itemIdx) => (
-            <ListItem
-              key={itemIdx}
-              isGoodFood={item.isGoodFood}
-              onClick={() => this.toggleTab(itemIdx)}
-            >
-              <ListItemHeader>
-                <span>{item.title}</span>
-                <ListItemHeaderIcon
-                  icon={faChevronRight}
-                  isOpenTab={this.state.openTabs[itemIdx]}
-                />
-              </ListItemHeader>
-              {this.state.openTabs[itemIdx] ? (
-                <ListItemBody>
-                  this is extra information<br />
-                  this is extra information<br />
-                  this is extra information<br />
-                  this is extra information<br />
-                  this is extra information<br />
-                  this is extra information<br />
-                  this is extra information<br />
-                  this is extra information<br />
-                  this is extra information<br />
-                  this is extra information<br />
-                  this is extra information<br />
-                  this is extra information<br />
-                  this is extra information<br />
-                  this is extra information<br />
-                  this is extra information<br />
-                </ListItemBody>
-              ) : ''}
-            </ListItem>
-          ))}
-        </ListContainer>
-      </PageContainer>
-    );
-  } 
+    findFood(item) {
+        return firebase.firestore().collection("foods").doc(item).get().then((doc) => {
+            if (doc.exists) {
+                console.log("Document data:", doc.data());
+                doc.data().name = item;
+                const data = {
+                    name: item,
+                    class: doc.data().class,
+                    desc: doc.data().desc
+                }
+                return data;
+            } else {
+                // doc.data() will be undefined in this case
+                console.log("No such document!");
+            }
+        }).catch((error) => {
+            console.log("Error getting document:", error);
+        });
+    }
+
+    async componentDidMount() {
+        const foodItems = [];
+        const openTabs = [];
+        console.log(this.props.itemList);
+        for (let item of this.props.itemList) {
+            await this.findFood(item).then(result => {
+                foodItems.push(result);
+                openTabs.push(false);
+            });
+        };
+
+        this.setState({
+            ...this.state,
+            fetchedData: foodItems,
+            openTabs,
+            isFetching: false
+        });
+    }
+
+    toggleTab = tabIdx => {
+        const newOpenTabs = this.state.openTabs;
+        newOpenTabs[tabIdx] = !newOpenTabs[tabIdx];
+        this.setState({
+            ...this.state,
+            openTabs: newOpenTabs
+        })
+    };
+
+    render() {
+        if (this.state.isFetching) {
+            return (
+                <PageContainer>
+                    <h1>List</h1>
+                    <p>Hey, just give us one moment!</p>
+                </PageContainer>
+            );
+        }
+
+        return (
+            <PageContainer>
+                <h1>List</h1>
+                <ListContainer>
+                    {this.state.fetchedData.map((item, itemIdx) => (
+                        <ListItem
+                            key={itemIdx}
+                            isGoodFood={item.class}
+                            onClick={() => this.toggleTab(itemIdx)}
+                        >
+                            <ListItemHeader>
+                                <span>{item.name}</span>
+                                <ListItemHeaderIcon
+                                    icon={faChevronRight}
+                                    isOpenTab={this.state.openTabs[itemIdx]}
+                                />
+                            </ListItemHeader>
+                            {this.state.openTabs[itemIdx] ? (
+                                <ListItemBody>
+                                    {item.desc}
+                                </ListItemBody>
+                            ) : ''}
+                        </ListItem>
+                    ))}
+                </ListContainer>
+            </PageContainer>
+        );
+    }
 }
 
 export default List;

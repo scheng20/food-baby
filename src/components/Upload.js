@@ -10,7 +10,7 @@ class Upload extends React.Component {
     }
 
     async handleUploadSuccess(filename) {
-        
+
         try {
             let { bucket, fullPath } = await firebase.storage().ref("images").child(filename).getMetadata();
             console.log("bucket", bucket);
@@ -29,11 +29,11 @@ class Upload extends React.Component {
             await firebase.firestore().collection("photos").add(newPhoto);
         }
 
-        catch(err) {
+        catch (err) {
             console.error(err);
         }
     }
-    
+
     handleUploadStart() {
         console.log("UPLOAD IS STARTING!");
     }
@@ -73,16 +73,16 @@ class Upload extends React.Component {
             <div>
                 <h1>Upload</h1>
                 <label>
-                <a className = "btn btn-primary"> Upload a file here </a>
-                <FileUploader
-                    hidden
-                    accept="image/*"
-                    storageRef={firebase.storage().ref("images")}
-                    onUploadStart={this.handleUploadStart}
-                    onUploadError={this.handleUploadError}
-                    onUploadSuccess={this.handleUploadSuccess}
-                    onProgress={this.handleProgress}
-                />
+                    <a className="btn btn-primary"> Upload a file here </a>
+                    <FileUploader
+                        hidden
+                        accept="image/*"
+                        storageRef={firebase.storage().ref("images")}
+                        onUploadStart={this.handleUploadStart}
+                        onUploadError={this.handleUploadError}
+                        onUploadSuccess={this.handleUploadSuccess}
+                        onProgress={this.handleProgress}
+                    />
                 </label>
             </div>
         );

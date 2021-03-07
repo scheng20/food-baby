@@ -26,6 +26,7 @@ exports.analyzeImage = functions.firestore.document('photos/{document}').onCreat
 		  veritices.forEach(v => console.log(`x: ${v.x}, y:${v.y}`));
 		});
 		
+		db.collection('results').doc(data.bucket).set(result);
 	})
 	.catch(err => console.log(err));
 })

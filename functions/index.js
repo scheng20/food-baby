@@ -27,16 +27,29 @@ exports.analyzeImage = functions.firestore.document('photos/{document}').onCreat
 
 	return Promise.resolve()
 	.then(() => {
-		return visionClient.labelDetection(photoUrl);
+		return visionClient.objectLocalization(photoUrl);
 	})
 	.then(results => {
-		console.log('VISION data all is: ', results)
+		
+		const [result] = results;
+
+		//console.log('VISION data all is: ', result)
 		
 		/*
-		const labels = results.labelAnnotations;
+		const labels = result.labelAnnotations;
 		console.log('Labels: ');
 		labels.forEach(label => console.log(label.description));
 		*/
+
+		const objects = result.localizedObjectAnnotations;
+
+		objects.forEach(object => {
+		  console.log(`Name: ${object.name}`);
+		  console.log(`Confidence: ${object.score}`);
+		  const veritices = object.boundingPoly.normalizedVertices;
+		  veritices.forEach(v => console.log(`x: ${v.x}, y:${v.y}`));
+		});
+		
 	})
 	.catch(err => console.log(err));
 

@@ -4,6 +4,7 @@ import firebase from "firebase";
 import FileUploader from "react-firebase-file-uploader";
 import "./component.css";
 import Navbar from "./Navbar"
+import { Link } from 'react-router-dom';
 
 class Upload extends React.Component {
 
@@ -60,17 +61,12 @@ class Upload extends React.Component {
 
             console.log("ALL THE NAMES");
             postData[0].data.forEach(data => {
-                console.log(data.name);
-                //this.props.addItem(data.name);
-                
-                /*
-                if(data.name !== null) {
-                    const newItemList = data.name;
-                    newItemList.push(this.state.item);
-                    this.props.addList(newItemList);
+                if(data && data.name !== null) {
+                    console.log("data", data.name)
+                    const newItemList = this.props.itemList;
+                    newItemList.push(data.name.toLowerCase());
+                    this.props.addItem(newItemList);
                 }
-                */
-                
             })
         })
     }
@@ -93,18 +89,20 @@ class Upload extends React.Component {
                     </div>
                 </div>
                 <div className = "upload-area">
-                <label>
-                    <a className="btn btn-primary"> Upload Photo </a>
-                    <FileUploader
-                        hidden
-                        accept="image/*"
-                        storageRef={firebase.storage().ref("images")}
-                        onUploadStart={this.handleUploadStart}
-                        onUploadError={this.handleUploadError}
-                        onUploadSuccess={this.handleUploadSuccess}
-                        onProgress={this.handleProgress}
-                    />
-                </label>
+                    <label>
+                        <a className="btn btn-primary"> Upload Photo </a>
+                        <FileUploader
+                            hidden
+                            accept="image/*"
+                            storageRef={firebase.storage().ref("images")}
+                            onUploadStart={this.handleUploadStart}
+                            onUploadError={this.handleUploadError}
+                            onUploadSuccess={this.handleUploadSuccess}
+                            onProgress={this.handleProgress}
+                        />
+                    </label>
+                    &nbsp;
+                    <Link className="btn btn-primary" to="/list">Confirm</Link>
                 </div>
                 <Navbar/>
             </div>

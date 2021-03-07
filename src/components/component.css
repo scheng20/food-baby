@@ -5,7 +5,15 @@ a:visited {
 a:link {
     text-decoration: none;
 }
-  
+
+link:visited {
+    text-decoration: none;
+}
+
+link:link {
+    text-decoration: none;
+}
+
 .h1-not-abs {
 	position: relative;
 	width: 300px;

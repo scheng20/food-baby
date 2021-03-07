@@ -25,7 +25,7 @@ const ListContainer = styled.div`
 
 const ListItem = styled.div`
   margin-top: 16px;
-  background-color: ${props => !props.isGoodFood ? '#a3de83' : '#fa4659'};
+  background-color: ${props => props.isGoodFood == 0 ? '#C7DDA8' : props.isGoodFood == 1 ? '#FEFFCC': '#F3C6C6'};
   width: 100%;
   border-radius: 8px;
   cursor: pointer;
@@ -83,7 +83,7 @@ class List extends React.Component {
     async componentDidMount() {
         const foodItems = [];
         const openTabs = [];
-        console.log(this.props.itemList);
+        console.log("itemList", this.props.itemList);
         for (let item of this.props.itemList) {
             await this.findFood(item).then(result => {
                 foodItems.push(result);

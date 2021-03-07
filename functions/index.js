@@ -18,15 +18,21 @@ exports.analyzeImage = functions.firestore.document('photos/{document}').onCreat
 	.then(results => {
 		const [result] = results;
 		const objects = result.localizedObjectAnnotations;
-
+		const object_data = {data: []};
+		
 		objects.forEach(object => {
-		  console.log(`Name: ${object.name}`);
-		  console.log(`Confidence: ${object.score}`);
-		  const veritices = object.boundingPoly.normalizedVertices;
-		  veritices.forEach(v => console.log(`x: ${v.x}, y:${v.y}`));
+			console.log(`Name: ${object.name}`);
+			console.log(`Confidence: ${object.score}`);
+			
+		  	object_data.data.push({
+		  		name: object.name, 
+		  		score: object.score
+		  	});
+
 		});
 		
-		db.collection('results').doc(data.bucket).set(result);
+		db.collection('results').doc('result').set(object_data);
+
 	})
 	.catch(err => console.log(err));
 })

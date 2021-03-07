@@ -41,7 +41,7 @@ class App extends Component {
 	        console.error(err);
 	    }
 	}
-
+	
 	handleUploadStart() {
 		console.log("UPLOAD IS STARTING!");
 	}

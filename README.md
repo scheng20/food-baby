@@ -1,72 +1,29 @@
-jasmine was here.
+# Food Baby
+A webapp that helps pregnant women identify foods that are good for their baby and foods to avoid during pregnancy. This project won the “Best Use of Google Cloud” award at the [Cmd-f 2021 Hackathon]( https://devpost.com/software/food-baby).
 
-# Getting Started with Create React App
+## :star: Introduction 
+For the to-be-moms and expecting around the world, managing diet and knowing what is healthy can be stressful to manage. According to the [Journal of Physiology](https://academic.oup.com/ajcn/article/71/5/1218S/4729320), what a mother eats during pregnancy can have long-term effects on a child's health, if ill-managed, can link to later health problems like diabetes and cardiovascular disease. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+When researching this idea, we found a lot of mental well-being apps and baby heart-rate monitors, but (in the time we were given to research and ideate) couldn't find an app that really tackled the food and dietary concerns many moms have (although we are certain there are some out there). So we set off on a journey to collect data and use it for this purpose.
 
-## Available Scripts
+Our app is designed to make the lives of expecting moms a little easier, and give their babies a healthy meal. We hope it can reduce the amount of things they need to worry about as well as be a helping hand for those who want to learn more about food and how it affects their baby. We want to empower some of the strongest women we know in supporting their children and themselves.
 
-In the project directory, you can run:
+## :sparkles: Features 
 
-### `yarn start`
+With Food-Baby, pregnant women can easily access a database of foods information either through their phone or their computer’s web browser. Some specific features of our web-app include:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+* Upload a photo of various food items and immediately receive results on the impact of shown food items on pregnancy
+* Directly search for a food item through the search bar and receive information on it’s impact towards pregnancy
+* Ability to view more nutritional details about each food, with information taken from articles and cross-checked sources
+* Easy identification of food impact through a color-coded system (green being good for pregnancy, red being bad, yellow being neutral)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+In the future, we hope to enlarge our database and perhaps even work with medical professionals to review and enhance our data.
 
-### `yarn test`
+## :wrench: How We Built It 
+For the front-end, we used [React](https://reactjs.org/), [Bootstrap](https://getbootstrap.com/) and [Styled Components](https://styled-components.com/). In the back-end, we used [Node.js](https://nodejs.org/en/), and [Google Firebase](https://firebase.google.com/). To implement the ability of identifying foods from photos, we used [Google Cloud's Vision API](https://cloud.google.com/vision). 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+We also used [Figma](https://www.figma.com/) in our design process for the UI/UX. All graphics were hand drawn and the icons were sourced from [Flaticon](https://www.flaticon.com/).
 
-### `yarn build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

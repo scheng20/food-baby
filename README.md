@@ -6,7 +6,7 @@ A webapp that helps pregnant women identify foods that are good for their baby a
 ## :star: Introduction 
 For the to-be-moms and expecting around the world, managing diet and knowing what is healthy can be stressful to manage. According to the [Journal of Physiology](https://academic.oup.com/ajcn/article/71/5/1218S/4729320), what a mother eats during pregnancy can have long-term effects on a child's health, if ill-managed, can link to later health problems like diabetes and cardiovascular disease. 
 
-<img src="screenshots/Food%20Baby%20Demo.gif" width="800" title="Demo">
+<img src="screenshots/Food%20Baby%20App%20Demo.gif" width="800" title="Demo">
 
 When researching this idea, we found a lot of mental well-being apps and baby heart-rate monitors, but (in the time we were given to research and ideate) couldn't find an app that really tackled the food and dietary concerns many moms have (although we are certain there are some out there). So we set off on a journey to collect data and use it for this purpose.
 
